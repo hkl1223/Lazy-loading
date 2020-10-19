@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>懒加载</title> 
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="./jquery.js"></script>
+</head>
+<body>
+    <style>
+        .container{
+          width:1000px;
+          margin: 0 auto;
+        }
+          img{
+            height: 300px;
+            margin:-3px
+          }
+        
+        </style>
+        
+      <body>
+      <div class="container">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/100/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/101/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/102/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/103/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/104/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/106/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/109/300">  
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/120/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/122/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/124/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/125/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/126/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/127/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/128/300">
+        <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1731078233,3382621087&fm=26&gp=0.jpg" alt="" data-src="https://picsum.photos/id/130/300">
+       
+      </div>
+      </div>
+      </body>
+        
+</body>
+<script>
+     start()
+   
+   $(window).on('scroll',function(){
+     start()
+   })    
+   
+    function start(){
+       $('.container img').not(['data-isLoaded']).each(function(){
+       if (isShow($(this))){
+         loadImg($(this))
+       }
+     })
+   }
+     function  isShow($node){
+       return $node.offset().top <= $(window).height()+$(window).scrollTop()
+     }
+   
+   function loadImg($img){
+     $img.attr('src',$img.attr('data-src'))
+     $img.attr('data-isLoaded',1)
+   }
+   
+   
+    
+  </script>
+</html>
